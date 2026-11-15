@@ -1,0 +1,147 @@
+# Contaminant semantic types added per (dirt_label_id, field) for cells listed in dirt_events_json.fields_affected.
+# Gold label = sorted unique( field_intent[field] + union(contaminants from each touching event) ).
+# Every mapped field list is non-empty: dirt IDs must add a type a detector should flag.
+
+contaminants:
+  MIS_NAME_SWAP_FL:
+    first_name: [family_name]
+    last_name: [given_name]
+  MIS_NAME_MIDDLE_TO_FIRST:
+    first_name: [additional_given_name]
+    middle_name: [unknown_content]
+  MIS_NAME_MERGE_ALL_FIRST:
+    first_name: [additional_given_name, family_name]
+    middle_name: [unknown_content]
+    last_name: [unknown_content]
+  MIS_NAME_SPLIT_WRONG:
+    first_name: [family_name]
+    last_name: [given_name]
+  MIS_NAME_HYPHEN_INCONSISTENT:
+    first_name: [family_name]
+    last_name: [given_name]
+  MIS_EMAIL_IN_FIRST:
+    first_name: [email]
+  MIS_EMAIL_IN_LAST:
+    last_name: [email]
+  MIS_PHONE_IN_FIRST:
+    first_name: [phone_e164]
+  MIS_ADDR_LINE_IN_FIRST:
+    first_name: [street_address]
+  MIS_POSTAL_IN_FIRST:
+    first_name: [postal_code]
+  MIS_TITLE_IN_FIRST:
+    first_name: [job_title]
+  MIS_DOB_IN_ADDRESS2:
+    address_line_2: [date_like]
+  MIS_JOB_IN_FIRST:
+    first_name: [job_title]
+  MIS_STATUS_IN_FIRST:
+    first_name: [status_token]
+  MIS_TWITTER_IN_FIRST:
+    first_name: [social_handle]
+  MIS_LINKEDIN_IN_PHONE:
+    phone: [url]
+  MIS_NUMERIC_FIRST:
+    first_name: [numeric_token]
+  MIS_FAKE_PHONE_SHORT:
+    phone: [corrupt_phone]
+  MIS_FAKE_PHONE_REPEAT:
+    phone: [corrupt_phone]
+  MIS_PHONE_NONNUMERIC:
+    phone: [corrupt_phone]
+  MIS_CITY_IN_PHONE:
+    phone: [locality, corrupt_phone]
+  MIS_STATE_IN_DL:
+    drivers_license_number: [region_code]
+  MIS_ORG_TOKEN_IN_FIRST:
+    first_name: [organization_name_fragment]
+  MIS_NOTE_IN_ADDRESS1:
+    address_line_1: [free_text_note]
+  MIS_ADDR_STRIP_PREMISE:
+    address_line_1: [incomplete_premise]
+    address_line_2: [incomplete_premise]
+  MIS_COMPOSITE_FIRST:
+    first_name: [mixed_delimiter_name]
+  MIS_NA_IN_CITY:
+    city: [placeholder_token]
+  MIS_INVALID_EMAIL_NO_AT:
+    email: [corrupt_email]
+  MIS_INVALID_EMAIL_MALFORMED:
+    email: [corrupt_email]
+
+  PH_UNKNOWN_REPLACE_FIRST:
+    first_name: [placeholder_token]
+  PH_TBA_SUFFIX_LAST:
+    last_name: [placeholder_token]
+  PH_NO_NAME_REPLACE_FIRST:
+    first_name: [placeholder_token]
+  PH_TEST_PREFIX_EMAIL:
+    email: [placeholder_token]
+  PH_NO_ADDRESS_REPLACE_LINE1:
+    address_line_1: [placeholder_token]
+  PH_NULL_STRING_FIRST:
+    first_name: [placeholder_token]
+  PH_DASH_REPLACE_FIRST:
+    first_name: [placeholder_token]
+  PH_DOT_REPLACE_FIRST:
+    first_name: [placeholder_token]
+  PH_SINGLE_CHAR_FIRST:
+    first_name: [placeholder_token]
+  PH_SPACE_ONLY_FIRST:
+    first_name: [placeholder_token]
+  PH_NA_REPLACE_EMAIL:
+    email: [placeholder_token]
+  PH_NULL_REPLACE_EMAIL:
+    email: [placeholder_token]
+  PH_UNKNOWN_REPLACE_EMAIL:
+    email: [placeholder_token]
+
+  MIS_ORG_EMAIL_AS_NAME:
+    organization_name: [email]
+  MIS_ORG_PHONE_AS_NAME:
+    organization_name: [phone_e164]
+  MIS_ORG_CONTACT_AS_NAME:
+    organization_name: [given_name, family_name]
+  MIS_ORG_TAX_IN_ADDRESS1:
+    address_line_1: [identifier_tax]
+  MIS_ORG_DUNS_IN_CITY:
+    city: [identifier_duns]
+  MIS_ORG_COUNTRY_IN_NAME:
+    organization_name: [country_name]
+  MIS_ORG_POSTAL_IN_NAME:
+    organization_name: [postal_code]
+  MIS_ORG_WEBSITE_AS_ADDRESS:
+    address_line_1: [url]
+  MIS_ORG_DEPT_IN_ADDRESS2:
+    address_line_2: [organization_name_fragment]
+  MIS_ORG_TEAM_AS_NAME:
+    organization_name: [organization_name_fragment]
+  MIS_ORG_STATUS_IN_NAME:
+    organization_name: [status_token]
+  MIS_COMPOSITE_ORG_NAME:
+    organization_name: [mixed_delimiter_name]
+  MIS_JOB_IN_ORG_NAME:
+    organization_name: [job_title]
+  MIS_INVALID_TAX_NOT_ID:
+    tax_id: [corrupt_tax]
+  MIS_INVALID_TAX_MALFORMED:
+    tax_id: [corrupt_tax]
+
+  PH_UNKNOWN_REPLACE_ORG:
+    organization_name: [placeholder_token]
+  PH_TBD_REPLACE_ORG:
+    organization_name: [placeholder_token]
+  PH_NA_REPLACE_CITY:
+    city: [placeholder_token]
+  PH_TEST_REPLACE_PHONE:
+    phone: [placeholder_token, corrupt_phone]
+  PH_DOT_REPLACE_TAX:
+    tax_id: [placeholder_token]
+  PH_SINGLE_CHAR_DUNS:
+    duns_number: [placeholder_token]
+  PH_NA_REPLACE_TAX:
+    tax_id: [placeholder_token]
+  PH_NULL_REPLACE_TAX:
+    tax_id: [placeholder_token]
+  PH_NOVAT_REPLACE_TAX:
+    tax_id: [placeholder_token]

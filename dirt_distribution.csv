@@ -1,0 +1,76 @@
+dataset_version,entity_type,dirt_family,dirt_label_id,target_scope,fields_affected_pattern,country_iso,sampling_weight,planned_primary_rate,actual_count,notes
+v3,person,misplacement,MIS_NAME_SWAP_FL,field,first_name;last_name,ALL,1,,454,1a swap names
+v3,person,misplacement,MIS_NAME_MIDDLE_TO_FIRST,field,first_name;middle_name,ALL,1,,90,1a middle
+v3,person,misplacement,MIS_NAME_MERGE_ALL_FIRST,field,first_name;middle_name;last_name,ALL,1,,408,1a merge
+v3,person,misplacement,MIS_NAME_SPLIT_WRONG,field,first_name;last_name,ALL,1,,393,1a split
+v3,person,misplacement,MIS_NAME_HYPHEN_INCONSISTENT,field,first_name;last_name,ALL,1,,458,1a hyphen
+v3,person,misplacement,MIS_EMAIL_IN_FIRST,field,first_name;email,ALL,1,,449,1a email in given
+v3,person,misplacement,MIS_EMAIL_IN_LAST,field,last_name;email,ALL,1,,434,1a email in family
+v3,person,misplacement,MIS_PHONE_IN_FIRST,field,first_name;phone,ALL,1,,438,1a phone in first
+v3,person,misplacement,MIS_ADDR_LINE_IN_FIRST,field,first_name;address_line_1,ALL,1,,454,1a street in name
+v3,person,misplacement,MIS_POSTAL_IN_FIRST,field,first_name;postal_code,ALL,1,,471,1a postal in name
+v3,person,misplacement,MIS_TITLE_IN_FIRST,field,first_name,ALL,1,,469,honorific in name
+v3,person,misplacement,MIS_DOB_IN_ADDRESS2,field,address_line_2,ALL,1,,409,date in address
+v3,person,misplacement,MIS_JOB_IN_FIRST,field,first_name,ALL,1,,467,job title in person name
+v3,person,misplacement,MIS_STATUS_IN_FIRST,field,first_name,ALL,1,,456,status in name
+v3,person,misplacement,MIS_TWITTER_IN_FIRST,field,first_name,ALL,1,,422,handle in name
+v3,person,misplacement,MIS_LINKEDIN_IN_PHONE,field,phone,ALL,1,,426,url in phone
+v3,person,misplacement,MIS_NUMERIC_FIRST,field,first_name,ALL,1,,440,numeric in name
+v3,person,misplacement,MIS_FAKE_PHONE_SHORT,field,phone,ALL,1,,454,fake phone short
+v3,person,misplacement,MIS_FAKE_PHONE_REPEAT,field,phone,ALL,1,,449,fake phone repeat
+v3,person,misplacement,MIS_PHONE_NONNUMERIC,field,phone,ALL,1,,426,alpha phone
+v3,person,misplacement,MIS_CITY_IN_PHONE,field,phone;city,ALL,1,,455,geo in phone
+v3,person,misplacement,MIS_STATE_IN_DL,field,drivers_license_number;state,ALL,1,,424,state in DL
+v3,person,misplacement,MIS_ORG_TOKEN_IN_FIRST,field,first_name,ALL,1,,491,company in given name
+v3,person,misplacement,MIS_NOTE_IN_ADDRESS1,field,address_line_1,ALL,1,,454,note in address
+v3,person,misplacement,MIS_ADDR_STRIP_PREMISE,field,address_line_1;address_line_2,ALL,1,,404,strip premise
+v3,person,misplacement,MIS_COMPOSITE_FIRST,field,first_name,ALL,1,,473,composite delimiter
+v3,person,misplacement,MIS_NA_IN_CITY,field,city,ALL,1,,421,N/A in city
+v3,person,misplacement,MIS_INVALID_EMAIL_NO_AT,field,email,ALL,1,,447,invalid email no at
+v3,person,misplacement,MIS_INVALID_EMAIL_MALFORMED,field,email,ALL,1,,449,malformed email
+v3,person,placeholder,PH_UNKNOWN_REPLACE_FIRST,field,first_name,ALL,1,,619,unknown
+v3,person,placeholder,PH_TBA_SUFFIX_LAST,field,last_name,ALL,1,,641,tba
+v3,person,placeholder,PH_NO_NAME_REPLACE_FIRST,field,first_name,ALL,1,,679,no name
+v3,person,placeholder,PH_TEST_PREFIX_EMAIL,field,email,ALL,1,,684,test email
+v3,person,placeholder,PH_NO_ADDRESS_REPLACE_LINE1,field,address_line_1,ALL,1,,613,no address
+v3,person,placeholder,PH_NULL_STRING_FIRST,field,first_name,ALL,1,,672,NULL
+v3,person,placeholder,PH_DASH_REPLACE_FIRST,field,first_name,ALL,1,,669,dash
+v3,person,placeholder,PH_DOT_REPLACE_FIRST,field,first_name,ALL,1,,1576,dot
+v3,person,placeholder,PH_SINGLE_CHAR_FIRST,field,first_name,ALL,1,,661,single char
+v3,person,placeholder,PH_SPACE_ONLY_FIRST,field,first_name,ALL,1,,642,space
+v3,person,placeholder,PH_NA_REPLACE_EMAIL,field,email,ALL,1,,647,N/A email
+v3,person,placeholder,PH_NULL_REPLACE_EMAIL,field,email,ALL,1,,650,NULL email
+v3,person,placeholder,PH_UNKNOWN_REPLACE_EMAIL,field,email,ALL,1,,681,unknown email
+v3,organization,misplacement,MIS_ORG_EMAIL_AS_NAME,field,organization_name;email,ALL,1,,638,email as org name
+v3,organization,misplacement,MIS_ORG_PHONE_AS_NAME,field,organization_name;phone,ALL,1,,595,phone as org name
+v3,organization,misplacement,MIS_ORG_CONTACT_AS_NAME,field,organization_name,ALL,1,,637,person as org name
+v3,organization,misplacement,MIS_ORG_TAX_IN_ADDRESS1,field,address_line_1;tax_id,ALL,1,,634,tax in address
+v3,organization,misplacement,MIS_ORG_DUNS_IN_CITY,field,city;duns_number,ALL,1,,647,DUNS in city
+v3,organization,misplacement,MIS_ORG_COUNTRY_IN_NAME,field,organization_name;country,ALL,1,,652,country as name
+v3,organization,misplacement,MIS_ORG_POSTAL_IN_NAME,field,organization_name;postal_code,ALL,1,,554,postal as name
+v3,organization,misplacement,MIS_ORG_WEBSITE_AS_ADDRESS,field,address_line_1,ALL,1,,638,website as address
+v3,organization,misplacement,MIS_ORG_DEPT_IN_ADDRESS2,field,address_line_2,ALL,1,,653,dept in address2
+v3,organization,misplacement,MIS_ORG_TEAM_AS_NAME,field,organization_name,ALL,1,,620,team as name
+v3,organization,misplacement,MIS_ORG_STATUS_IN_NAME,field,organization_name,ALL,1,,601,status as name
+v3,organization,misplacement,MIS_COMPOSITE_ORG_NAME,field,organization_name,ALL,1,,668,composite org
+v3,organization,misplacement,MIS_JOB_IN_ORG_NAME,field,organization_name,ALL,1,,627,job title as org name
+v3,organization,misplacement,MIS_NOTE_IN_ADDRESS1,field,address_line_1,ALL,1,,637,note in address
+v3,organization,misplacement,MIS_ADDR_STRIP_PREMISE,field,address_line_1;address_line_2,ALL,1,,564,strip premise
+v3,organization,misplacement,MIS_NA_IN_CITY,field,city,ALL,1,,605,N/A city
+v3,organization,misplacement,MIS_INVALID_EMAIL_NO_AT,field,email,ALL,1,,630,invalid email
+v3,organization,misplacement,MIS_INVALID_EMAIL_MALFORMED,field,email,ALL,1,,652,malformed email
+v3,organization,misplacement,MIS_INVALID_TAX_NOT_ID,field,tax_id,ALL,1,,580,not a tax id
+v3,organization,misplacement,MIS_INVALID_TAX_MALFORMED,field,tax_id,ALL,1,,694,malformed tax
+v3,organization,placeholder,PH_UNKNOWN_REPLACE_ORG,field,organization_name,ALL,1,,669,unknown org
+v3,organization,placeholder,PH_TBD_REPLACE_ORG,field,organization_name,ALL,1,,641,TBD org
+v3,organization,placeholder,PH_NA_REPLACE_CITY,field,city,ALL,1,,1502,n/a city
+v3,organization,placeholder,PH_TEST_REPLACE_PHONE,field,phone,ALL,1,,670,test phone
+v3,organization,placeholder,PH_DOT_REPLACE_TAX,field,tax_id,ALL,1,,705,dot tax
+v3,organization,placeholder,PH_SINGLE_CHAR_DUNS,field,duns_number,ALL,1,,657,single duns
+v3,organization,placeholder,PH_TEST_PREFIX_EMAIL,field,email,ALL,1,,711,test email
+v3,organization,placeholder,PH_NA_REPLACE_EMAIL,field,email,ALL,1,,635,N/A email
+v3,organization,placeholder,PH_NULL_REPLACE_EMAIL,field,email,ALL,1,,626,NULL email
+v3,organization,placeholder,PH_UNKNOWN_REPLACE_EMAIL,field,email,ALL,1,,670,unknown email
+v3,organization,placeholder,PH_NA_REPLACE_TAX,field,tax_id,ALL,1,,666,N/A tax
+v3,organization,placeholder,PH_NULL_REPLACE_TAX,field,tax_id,ALL,1,,654,NULL tax
+v3,organization,placeholder,PH_NOVAT_REPLACE_TAX,field,tax_id,ALL,1,,655,no VAT

@@ -1,0 +1,216 @@
+# Per ISO: Faker locale, analyzer language (ISO 639-1), phone region (ITU), state column expectation, EU VAT-style org tax where applicable.
+# Keys must be quoted so YAML 1.1 does not treat NO, ON, etc. as booleans.
+# analyzer_language: NLP/Presidio analyze(..., language=...) — may differ from faker_locale prefix (see RS).
+
+"US":
+  faker_locale: en_US
+  analyzer_language: en
+  phone_region: US
+  state_required: true
+  eu_vat: false
+"DE":
+  faker_locale: de_DE
+  analyzer_language: de
+  phone_region: DE
+  state_required: true
+  eu_vat: true
+"GB":
+  faker_locale: en_GB
+  analyzer_language: en
+  phone_region: GB
+  state_required: false
+  eu_vat: false
+"FR":
+  faker_locale: fr_FR
+  analyzer_language: fr
+  phone_region: FR
+  state_required: true
+  eu_vat: true
+"CA":
+  faker_locale: en_CA
+  analyzer_language: en
+  phone_region: CA
+  state_required: true
+  eu_vat: false
+"IT":
+  faker_locale: it_IT
+  analyzer_language: it
+  phone_region: IT
+  state_required: true
+  eu_vat: true
+"BR":
+  faker_locale: pt_BR
+  analyzer_language: pt
+  phone_region: BR
+  state_required: true
+  eu_vat: false
+"ES":
+  faker_locale: es_ES
+  analyzer_language: es
+  phone_region: ES
+  state_required: true
+  eu_vat: true
+"MX":
+  faker_locale: es_MX
+  analyzer_language: es
+  phone_region: MX
+  state_required: true
+  eu_vat: false
+"NL":
+  faker_locale: nl_NL
+  analyzer_language: nl
+  phone_region: NL
+  state_required: true
+  eu_vat: true
+"CH":
+  faker_locale: de_CH
+  analyzer_language: de
+  phone_region: CH
+  state_required: true
+  eu_vat: false
+"PL":
+  faker_locale: pl_PL
+  analyzer_language: pl
+  phone_region: PL
+  state_required: true
+  eu_vat: true
+"SE":
+  faker_locale: sv_SE
+  analyzer_language: sv
+  phone_region: SE
+  state_required: true
+  eu_vat: true
+"BE":
+  faker_locale: nl_BE
+  analyzer_language: nl
+  phone_region: BE
+  state_required: true
+  eu_vat: true
+"AR":
+  faker_locale: es_AR
+  analyzer_language: es
+  phone_region: AR
+  state_required: true
+  eu_vat: false
+"AT":
+  faker_locale: de_AT
+  analyzer_language: de
+  phone_region: AT
+  state_required: true
+  eu_vat: true
+"NO":
+  faker_locale: no_NO
+  analyzer_language: "no"
+  phone_region: "NO"
+  state_required: false
+  eu_vat: false
+"IE":
+  faker_locale: en_IE
+  analyzer_language: en
+  phone_region: IE
+  state_required: false
+  eu_vat: true
+"CZ":
+  faker_locale: cs_CZ
+  analyzer_language: cs
+  phone_region: CZ
+  state_required: true
+  eu_vat: true
+"DK":
+  faker_locale: da_DK
+  analyzer_language: da
+  phone_region: DK
+  state_required: true
+  eu_vat: true
+"FI":
+  faker_locale: fi_FI
+  analyzer_language: fi
+  phone_region: FI
+  state_required: true
+  eu_vat: true
+"RO":
+  faker_locale: ro_RO
+  analyzer_language: ro
+  phone_region: RO
+  state_required: true
+  eu_vat: true
+"CL":
+  faker_locale: es_CL
+  analyzer_language: es
+  phone_region: CL
+  state_required: true
+  eu_vat: false
+"CO":
+  faker_locale: es_CO
+  analyzer_language: es
+  phone_region: CO
+  state_required: true
+  eu_vat: false
+"PT":
+  faker_locale: pt_PT
+  analyzer_language: pt
+  phone_region: PT
+  state_required: true
+  eu_vat: true
+"HU":
+  faker_locale: hu_HU
+  analyzer_language: hu
+  phone_region: HU
+  state_required: true
+  eu_vat: true
+"SK":
+  faker_locale: sk_SK
+  analyzer_language: sk
+  phone_region: SK
+  state_required: true
+  eu_vat: true
+"BG":
+  faker_locale: bg_BG
+  analyzer_language: bg
+  phone_region: BG
+  state_required: true
+  eu_vat: true
+"HR":
+  faker_locale: hr_HR
+  analyzer_language: hr
+  phone_region: HR
+  state_required: true
+  eu_vat: true
+# Faker has no sr_RS. hr_HR is a South-Slavic Latin-script proxy (not Serbian language/Cyrillic/toponyms).
+# Omit RS from name/address locale metrics if the proxy would corrupt them. phone_region stays RS.
+"RS":
+  faker_locale: hr_HR
+  analyzer_language: hr
+  phone_region: RS
+  state_required: true
+  eu_vat: false
+"SI":
+  faker_locale: sl_SI
+  analyzer_language: sl
+  phone_region: SI
+  state_required: true
+  eu_vat: true
+"LT":
+  faker_locale: lt_LT
+  analyzer_language: lt
+  phone_region: LT
+  state_required: true
+  eu_vat: true
+"LV":
+  faker_locale: lv_LV
+  analyzer_language: lv
+  phone_region: LV
+  state_required: true
+  eu_vat: true
+"EE":
+  faker_locale: et_EE
+  analyzer_language: et
+  phone_region: EE
+  state_required: true
+  eu_vat: true
+"UA":
+  faker_locale: uk_UA
+  analyzer_language: uk
+  phone_region: UA
+  state_required: true
+  eu_vat: false

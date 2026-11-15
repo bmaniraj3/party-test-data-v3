@@ -1,0 +1,30 @@
+# Default semantic intent (per field) before dirt. Union with contaminants from dirt_label_to_types.yaml.
+
+person:
+  first_name: [given_name]
+  middle_name: [additional_given_name]
+  last_name: [family_name]
+  address_line_1: [street_address]
+  address_line_2: [street_address]
+  city: [locality]
+  postal_code: [postal_code]
+  country: [country_name]
+  country_iso: [region_code]
+  state: [region_code]
+  email: [email]
+  phone: [phone_e164]
+  drivers_license_number: [drivers_license]
+
+organization:
+  organization_name: [organization_name]
+  address_line_1: [street_address]
+  address_line_2: [street_address]
+  city: [locality]
+  postal_code: [postal_code]
+  country: [country_name]
+  country_iso: [region_code]
+  state: [region_code]
+  email: [email]
+  phone: [phone_e164]
+  tax_id: [identifier_tax]
+  duns_number: [identifier_duns]

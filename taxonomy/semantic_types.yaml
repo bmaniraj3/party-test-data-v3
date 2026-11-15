@@ -1,0 +1,62 @@
+# Canonical semantic types for per-cell multi-label typing (not MDM attribute names).
+# Used by gold labels and model output normalization.
+
+types:
+  given_name:
+    description: Personal given / first name token(s).
+  additional_given_name:
+    description: Middle name or second given name.
+  family_name:
+    description: Family / last name.
+  organization_name:
+    description: Legal or trade organization name.
+  email:
+    description: Email address (any plausible RFC5322-like pattern).
+  phone_e164:
+    description: Telephone number (digits, +, formatting).
+  url:
+    description: HTTP(S) or similar URL.
+  street_address:
+    description: Street line with number and street token.
+  incomplete_premise:
+    description: Street line that is missing a house/premise number after it was stripped (not a placeholder).
+  locality:
+    description: City, town, or village name.
+  postal_code:
+    description: Postal or ZIP code.
+  region_code:
+    description: State, province, or region short code.
+  country_name:
+    description: Country name (not necessarily ISO).
+  identifier_tax:
+    description: Tax / VAT style identifier.
+  identifier_duns:
+    description: DUNS or similar numeric org id.
+  drivers_license:
+    description: Driver license or regional license id.
+  date_like:
+    description: ISO-like or numeric date fragment.
+  placeholder_token:
+    description: Anonymous, unknown, test, TBD, NULL string, single punctuation, etc.
+  status_token:
+    description: Lifecycle / CRM status word (Active, Pending, ...).
+  job_title:
+    description: Role or title token (CEO, ...).
+  social_handle:
+    description: "@handle or social profile style token."
+  numeric_token:
+    description: Bare numeric or code in a text-first field.
+  free_text_note:
+    description: Free-text note appended or embedded (; Moved ...).
+  organization_name_fragment:
+    description: Org-like token embedded in a person-name field (e.g. Acme).
+  corrupt_phone:
+    description: Non-callable or garbage phone string.
+  corrupt_email:
+    description: Not a valid email (missing @, malformed syntax, not an address).
+  corrupt_tax:
+    description: Not a tax/VAT identifier (placeholder words or malformed id).
+  mixed_delimiter_name:
+    description: Composite personal or org name with / or similar.
+  unknown_content:
+    description: Empty or unclassified cell.

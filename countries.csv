@@ -1,0 +1,36 @@
+Priority,Country Name,ISO Code,Region,GDP (USD, Trillions)
+1,United States,US,North America,26.95
+2,Germany,DE,Western Europe,4.43
+3,United Kingdom,GB,Western Europe,3.33
+4,France,FR,Western Europe,2.78
+5,Canada,CA,North America,2.12
+6,Italy,IT,Southern Europe,2.01
+7,Brazil,BR,South America,2.13
+8,Spain,ES,Southern Europe,1.60
+9,Mexico,MX,North America,1.47
+10,Netherlands,NL,Western Europe,1.04
+11,Switzerland,CH,Western Europe,0.92
+12,Poland,PL,Eastern Europe,0.86
+13,Sweden,SE,Northern Europe,0.63
+14,Belgium,BE,Western Europe,0.59
+15,Argentina,AR,South America,0.63
+16,Austria,AT,Western Europe,0.52
+17,Norway,NO,Western Europe,0.55
+18,Ireland,IE,Western Europe,0.53
+19,"Czechia (Czech Rep.)",CZ,Eastern Europe,0.32
+20,Denmark,DK,Western Europe,0.44
+21,Finland,FI,Northern Europe,0.31
+22,Romania,RO,Eastern Europe,0.31
+23,Chile,CL,South America,0.33
+24,Colombia,CO,South America,0.32
+25,Portugal,PT,Southern Europe,0.27
+26,Hungary,HU,Eastern Europe,0.20
+27,Slovakia,SK,Eastern Europe,0.13
+28,Bulgaria,BG,Eastern Europe,0.09
+29,Croatia,HR,Eastern Europe,0.07
+30,Serbia,RS,Eastern Europe,0.07
+31,Slovenia,SI,Eastern Europe,0.07
+32,Lithuania,LT,Eastern Europe,0.07
+33,Latvia,LV,Eastern Europe,0.04
+34,Estonia,EE,Eastern Europe,0.04
+35,Ukraine,UA,Eastern Europe,0.16

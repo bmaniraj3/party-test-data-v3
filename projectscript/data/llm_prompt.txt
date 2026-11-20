@@ -1,0 +1,98 @@
+You check customer master-data records for data-quality errors.
+
+You will get one record (a person or an organization) as JSON. Decide, for each field, whether its value is wrong for that field. Most fields in a record are clean, so only flag a field when you can say what is wrong with it. Use the whole record: some errors only show when you compare fields (for example, a first and last name that were swapped).
+
+## What each field should contain
+- first_name: the person's given name only.
+- middle_name: a second given name. Often empty, and empty is normal.
+- last_name: the person's family name.
+- organization_name: a legal or trade company name (e.g. "Johnson-Greene", "Kaupas, Poška and Narušis").
+- address_line_1: a street line, usually with a house/building number. A street with no number can be clean, but a line that looks like its number was cut off (e.g. ends in "Dpto." or "Apt." with nothing after it) is not.
+- address_line_2: extra address detail (apartment, floor, building). Often empty, and empty is normal.
+- city: a city, town or village name.
+- postal_code: the postal or ZIP code in the country's format.
+- state: a state, province or region. May be empty in countries that don't use one.
+- country / country_iso: the country name and its 2-letter code.
+- email: an email address. Plus-addressing (user+tag@domain) and shared mailboxes (info@...) are clean.
+- phone: a phone number in E.164 format (starts with +, then digits).
+- drivers_license_number: a driver's license number in that country's format.
+- tax_id: a tax or VAT number. Compact, hyphenated and spaced formats are all clean.
+- duns_number: exactly 9 digits.
+
+## Error types
+Label a flagged field with every type that applies. Most labels name the kind of content that is wrongly in the field: a family name in first_name is "family_name"; an email in organization_name is "email". A few labels describe damage instead: "corrupt_phone", "corrupt_email", "corrupt_tax", "incomplete_premise", and "unknown_content" for a field that was emptied because its value was moved into another field.
+
+- additional_given_name: Middle name or second given name.
+- corrupt_email: Not a valid email (missing @, malformed syntax, not an address).
+- corrupt_phone: Non-callable or garbage phone string.
+- corrupt_tax: Not a tax/VAT identifier (placeholder words or malformed id).
+- country_name: Country name (not necessarily ISO).
+- date_like: ISO-like or numeric date fragment.
+- email: Email address (any plausible RFC5322-like pattern).
+- family_name: Family / last name.
+- free_text_note: Free-text note appended or embedded (; Moved ...).
+- given_name: Personal given / first name token(s).
+- identifier_duns: DUNS or similar numeric org id.
+- identifier_tax: Tax / VAT style identifier.
+- incomplete_premise: Street line that is missing a house/premise number after it was stripped (not a placeholder).
+- job_title: Role or title token (CEO, ...).
+- locality: City, town, or village name.
+- mixed_delimiter_name: Composite personal or org name with / or similar.
+- numeric_token: Bare numeric or code in a text-first field.
+- organization_name_fragment: Org-like token embedded in a person-name field (e.g. Acme).
+- phone_e164: Telephone number (digits, +, formatting).
+- placeholder_token: Anonymous, unknown, test, TBD, NULL string, single punctuation, etc.
+- postal_code: Postal or ZIP code.
+- region_code: State, province, or region short code.
+- social_handle: @handle or social profile style token.
+- status_token: Lifecycle / CRM status word (Active, Pending, ...).
+- street_address: Street line with number and street token.
+- unknown_content: Empty or unclassified cell.
+- url: HTTP(S) or similar URL.
+
+## Output
+Return JSON with one key, "flagged": a list with one entry per wrong field. Each entry has "field" (the field name), "error_types" (a list of types from the list above) and "reason" (one short sentence). Leave clean fields out. If every field is clean, return {"flagged": []}.
+
+## Examples
+Record:
+{"entity_type": "person", "country_iso": "CH", "fields": {"first_name": "Bianchi", "middle_name": "", "last_name": "Angelika", "address_line_1": "Schallerstrasse 51", "address_line_2": "", "city": "Bulle", "postal_code": "9107", "state": "ADM29", "country": "Switzerland", "country_iso": "CH", "email": "a@b@c.com", "phone": "+41345799450", "drivers_license_number": "N58N7X91GZQ"}}
+Answer:
+{"flagged": [{"field": "first_name", "error_types": ["family_name"], "reason": "'Bianchi' is a family name; it was swapped with the last name."}, {"field": "last_name", "error_types": ["given_name"], "reason": "'Angelika' is a given name; it was swapped with the first name."}, {"field": "email", "error_types": ["corrupt_email"], "reason": "Two @ signs, so not a valid email address."}]}
+
+Record:
+{"entity_type": "person", "country_iso": "IE", "fields": {"first_name": "Zach Joanna", "middle_name": "", "last_name": "Mullin", "address_line_1": "39 Roland Street", "address_line_2": "", "city": "Samantha Ville", "postal_code": "R48 K0CK", "state": "", "country": "Ireland", "country_iso": "IE", "email": "ucosgrove@example.com", "phone": "city:Samantha Ville", "drivers_license_number": "8380276VA"}}
+Answer:
+{"flagged": [{"field": "first_name", "error_types": ["additional_given_name"], "reason": "Contains two given names; 'Joanna' is the middle name."}, {"field": "middle_name", "error_types": ["unknown_content"], "reason": "Empty because the middle name was moved into first_name."}, {"field": "phone", "error_types": ["corrupt_phone", "locality"], "reason": "A city label, not a phone number."}]}
+
+Record:
+{"entity_type": "person", "country_iso": "SE", "fields": {"first_name": "*", "middle_name": "", "last_name": "Brink", "address_line_1": "Villavägen 019", "address_line_2": "", "city": "Eskilstuna", "postal_code": "30358", "state": "Västra Götalands län", "country": "Sweden", "country_iso": "SE", "email": "ohjalmarsson@example.org", "phone": "+46840280512", "drivers_license_number": "771209-3041"}}
+Answer:
+{"flagged": [{"field": "first_name", "error_types": ["placeholder_token"], "reason": "A single symbol, not a name."}]}
+
+Record:
+{"entity_type": "organization", "country_iso": "AT", "fields": {"organization_name": "Schüller Kriegl OG", "address_line_1": "Emilia-Eichberger-Ring", "address_line_2": "", "city": "Allentsteig", "postal_code": "6393", "state": "Burgenland", "country": "Austria", "country_iso": "AT", "email": "pernernikita@rottensteiner.org", "phone": "+43261362413197", "tax_id": "AT-U37129129", "duns_number": "0"}}
+Answer:
+{"flagged": [{"field": "address_line_1", "error_types": ["incomplete_premise"], "reason": "Street name only; Austrian street lines normally carry a house number."}, {"field": "duns_number", "error_types": ["placeholder_token"], "reason": "A single character, not a 9-digit DUNS number."}]}
+
+Record:
+{"entity_type": "organization", "country_iso": "DE", "fields": {"organization_name": "Marie-Luise Langern", "address_line_1": "Täscheallee 67-80", "address_line_2": "", "city": "Celle", "postal_code": "45410", "state": "Brandenburg", "country": "Germany", "country_iso": "DE", "email": "reinhardtarne@knappe.de", "phone": "+497326422987", "tax_id": "DE699163123", "duns_number": "436391705"}}
+Answer:
+{"flagged": [{"field": "organization_name", "error_types": ["family_name", "given_name"], "reason": "A person's full name, not a company name."}]}
+
+Record:
+{"entity_type": "organization", "country_iso": "SI", "fields": {"organization_name": "nikolaceh@darko.com", "address_line_1": "Ulica Staneta Severja 8b", "address_line_2": "", "city": "Grosuplje", "postal_code": "7416", "state": "Pomurksa", "country": "Slovenia", "country_iso": "SI", "email": "nikolaceh@darko.com", "phone": "+38622382516", "tax_id": "XX-1", "duns_number": "665167403"}}
+Answer:
+{"flagged": [{"field": "organization_name", "error_types": ["email"], "reason": "An email address, not a company name."}, {"field": "tax_id", "error_types": ["corrupt_tax"], "reason": "Too short to be a Slovenian VAT number."}]}
+
+Record:
+{"entity_type": "person", "country_iso": "HR", "fields": {"first_name": "Direktor", "middle_name": "Zoran", "last_name": "Katić", "address_line_1": "Horvatovac 0c", "address_line_2": "", "city": "Glina", "postal_code": "90477", "state": "Varaždinska", "country": "Croatia", "country_iso": "HR", "email": "elizabeta25@example.com", "phone": "https://www.linkedin.com/in/example43", "drivers_license_number": "50123046241"}}
+Answer:
+{"flagged": [{"field": "first_name", "error_types": ["job_title"], "reason": "'Direktor' is a job title, not a name."}, {"field": "phone", "error_types": ["url"], "reason": "A LinkedIn URL, not a phone number."}]}
+
+Record:
+{"entity_type": "organization", "country_iso": "CA", "fields": {"organization_name": "Customer", "address_line_1": "027 Amber Mount", "address_line_2": "", "city": "East Justinstad", "postal_code": "N2E 3M7", "state": "Nunavut", "country": "Canada", "country_iso": "CA", "email": "conleyalyssa+mdm0709@rodriguez.info", "phone": "+14312260936", "tax_id": "CA-3835246987", "duns_number": "531982031"}}
+Answer:
+{"flagged": [{"field": "organization_name", "error_types": ["status_token"], "reason": "'Customer' is a CRM status word, not a company name."}]}
+
+=== RECORD TO CHECK ===
+{"entity_type": "person", "country_iso": "AR", "fields": {"first_name": "Cliente", "middle_name": "", "last_name": "Rodriguez", "address_line_1": "Diag. 4 N° 754", "address_line_2": "Piso 6 Dto. 8", "city": "Resistencia", "postal_code": "85009763", "state": "Salta", "country": "Argentina", "country_iso": "AR", "email": "mateo-valentinsosa@example.net", "phone": "+5491125393864", "drivers_license_number": "69681424652"}}
